@@ -44,10 +44,10 @@ There are a number of open source BOSH release projects for running open source 
 During this script, approximately 2G of content is downloaded (Vagrant box, Cloud Foundry source & dependencies, Warden image/stemcell). Also, the first time you run the installer (it can be re-run over and over to upgrade and rebuild), it will compile the source packages of Cloud Foundry one time. If you re-run the script below, these assets will not be downloaded again.
 
 ```
-curl https://raw2.github.com/cloudfoundry-community/bosh-lite-demo/master/binscripts/bosh-lite-cloudfoundry-demo | bash
+curl https://raw.githubusercontent.com/danielkennedy/bosh-lite-demo/master/binscripts/bosh-lite-cloudfoundry-demo | bash
 ```
 
-You may you want to [read through this script](https://github.com/cloudfoundry-community/bosh-lite-demo/blob/master/binscripts/bosh-lite-cloudfoundry-demo) first.
+You may you want to [read through this script](https://raw.githubusercontent.com/danielkennedy/bosh-lite-demo/master/binscripts/bosh-lite-cloudfoundry-demo) first.
 
 If the script ever fails, re-run it and it will skip over any steps that were already successfully.
 
@@ -65,7 +65,7 @@ The installer script uses the following to get some assets:
 To deploy Cloud Foundry and then talk to Cloud Foundry as an administrator/user:
 
 * spiff - used to construct a large YAML file used to deploy BOSH releases
-* gcf - Cloud Foundry's own CLI for users and admins
+* cf - Cloud Foundry's own CLI for users and admins
 
 The installer script will test for the existence of these requirements. It's currently not clever enough to check for versions, so you will be prompted to confirm you have the right versions.
 
