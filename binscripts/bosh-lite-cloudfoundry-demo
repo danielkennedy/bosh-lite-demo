@@ -14,7 +14,7 @@ set +x
 ## Dependency locations
 ##
 BOSH_LITE_REPO=${BOSH_LITE_REPO:-https://github.com/cloudfoundry/bosh-lite.git}
-RELEASE_VERSION=${RELEASE_VERSION:-154}
+RELEASE_VERSION=${RELEASE_VERSION:-183}
 RELEASE_TGZ_URL=${RELEASE_TGZ:-https://github.com/cloudfoundry/cf-release/archive/v$RELEASE_VERSION.tar.gz}
 STEMCELL_NAME=${STEMCELL_NAME:-bosh-stemcell-24-warden-boshlite-ubuntu.tgz}
 
@@ -131,9 +131,9 @@ fi
 cd $WORKSPACE_DIR/bosh-lite
 
 if [[ "${NO_REBUILD}X" == "X" ]]; then
-    vagrant destroy -f
+    vagrant destroy local -f
 fi
-vagrant up
+vagrant up local --provider=virtualbox
 
 
 set +e # do not exit on error; allow these to fail if already performed
@@ -144,10 +144,10 @@ set -e # exit on error
 
 # specifically for cf-release/bosh-lite need to setup $CF_RELEASE_DIR
 export CF_RELEASE_DIR=${RELEASE_DIR}
-scripts/make_manifest_spiff
+bin/make_manifest_spiff
 
 # Parallelise the deployment!
-echo "  serial: false" >> manifests/cf-manifest.yml
+#echo "  serial: false" >> manifests/cf-manifest.yml
 
 ##
 ## Deploy Cloud Foundry into our BOSH (bosh-lite)
