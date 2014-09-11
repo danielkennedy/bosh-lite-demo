@@ -176,7 +176,7 @@ cat << NEXTSTEPS
 You're all set. To begin using Cloud Foundry, please do the following:
 
 1. Point your 'cf' CLI tool to your CF deployment
-   > cf api https://api.10.244.0.34.xip.io
+   > cf api https://api.10.244.0.34.xip.io --skip-ssl-validation
 
 2. Login to your CF deployment
    > cf auth admin admin
